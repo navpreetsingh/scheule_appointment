@@ -1,0 +1,14 @@
+<% cache message do %>
+	<div class="message">
+		<p style="margin-left: 10px;">
+			<% if message.jarvis %>
+				<span style="color: blue;">
+					<%= "JARVIS: " %>
+				</span>
+			<% else %>
+				<%= "YOU: " %>
+			<% end %>
+			<%= message.content %>
+		</p>
+	</div>
+<% end %>

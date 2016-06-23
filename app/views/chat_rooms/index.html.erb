@@ -1,0 +1,19 @@
+<h1>Chat room</h1>
+<p id="notice"><%= notice %></p>
+
+<div id = "delete_all">
+	<p style="float: right;">
+		<%= link_to "Delete all", :destroy_all_messages %>	
+	</p>
+</div>
+
+<div id="messages">
+	<%= render @messages %>
+</div>
+
+<%= form_for @message, :action => 'https://www.google.com/search', method: :post, :html => {:id => "labnol"}, :authenticity_token => true do |f| %>
+	<div class="speech">
+		<%= f.text_field :content, placeholder: "Speak", id: "transcript"  %>
+		<%= image_tag("//i.imgur.com/cHidSVu.gif", id: "start_dictation", alt: "Mike") %>		
+	</div>
+<% end %>
