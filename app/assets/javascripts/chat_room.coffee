@@ -15,8 +15,8 @@ $(document).on 'ready page:load', ->
 			recognition.start()
 
 			recognition.onresult = (e)->				
-				$('#transcript').val(e.results[0][0].transcript)
-				recognition.stop()
+				$('#transcript').val(e.results[0][0].transcript)			
+				recognition.stop()				
 				$('#labnol').submit()
 
 			recognition.onerror = (e)->

@@ -8,12 +8,13 @@
 </div>
 
 <div id="messages">
-	<%= render @messages %>
+	<%= render partial: 'messages/message' %>
 </div>
 
-<%= form_for @message, :action => 'https://www.google.com/search', method: :post, :html => {:id => "labnol"}, :authenticity_token => true do |f| %>
+<%= form_for @message, :action => 'https://www.google.com/search', method: :post, :html => {:id => "labnol"}, :authenticity_token => true, remote: true do |f| %>
 	<div class="speech">
 		<%= f.text_field :content, placeholder: "Speak", id: "transcript"  %>
-		<%= image_tag("//i.imgur.com/cHidSVu.gif", id: "start_dictation", alt: "Mike") %>		
+		<%= image_tag("//i.imgur.com/cHidSVu.gif", id: "start_dictation", alt: "Mike") %>
+		<%= f.hidden_field :jarvis, value: false %>		
 	</div>
 <% end %>

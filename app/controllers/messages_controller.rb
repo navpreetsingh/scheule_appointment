@@ -1,24 +1,32 @@
 class MessagesController < ApplicationController
+  before_action :set_message, only: [:update, :destroy]
+
   def create
   	message = Message.new(message_params)
-  	message.jarvis = message_params.keys.include? ("jarvis")
-  	if message.save!
+    jarvis_response = 1
+  	if message.save!      
   		if message.content.downcase.include? "jarvis" and !(message.content.downcase.include? ("how are you")) and !(message.content.downcase.split(" ").any? { |i| ["book", "appointment"].include? i })
   			Message.create(content: "Yes Sir!!!", jarvis: true)
+        jarvis_response = 2
   		end
   		if message.content.downcase.include? "how are you" and !(message.content.downcase.split(" ").any? { |i| ["book", "appointment"].include? i })
   		 	Message.create(content: "I am fine sir!!! How are you?", jarvis: true)
+        jarvis_response = 2
   		end
   		if message.content.downcase.split(" ").any? { |i| ["book", "appointment"].include? i }
   			Message.create(content: "Sure Sir!!! Booking Confirmed.", jarvis: true)
+        jarvis_response = 2
   		end
-    	redirect_to :chat_rooms
+      @messages = Message.last(jarvis_response)
+      respond_to do |format|
+        format.js
+      end   	
   	else
     	redirect_to :chat_rooms, notice: 'Message not saved!!!.'
   	end
   end
 
-  def edit
+  def update
   end
 
   def destroy

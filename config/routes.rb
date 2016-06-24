@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :chat_rooms, :only => [:index]
-  resources :messages, :only => [:create, :delete, :edit, :update] do
+  resources :messages, :only => [:create, :delete, :update] do
     collection do
       match "destroy_all", :via => [:get]
     end

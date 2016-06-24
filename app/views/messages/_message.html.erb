@@ -1,14 +1,21 @@
-<% cache message do %>
-	<div class="message">
-		<p style="margin-left: 10px;">
-			<% if message.jarvis %>
-				<span style="color: blue;">
-					<%= "JARVIS: " %>
-				</span>
-			<% else %>
-				<%= "YOU: " %>
-			<% end %>
-			<%= message.content %>
-		</p>
-	</div>
+<% @messages.each do |message| %>
+	<% cache message do %>
+		<div class="message">
+			<p style="margin-left: 10px;">
+				<% if message.jarvis %>
+					<span style="color: blue;">
+						<%= "JARVIS: " %>
+					</span>
+					<% if request.xhr? %>
+						<script type="text/javascript">
+					        responsiveVoice.speak("<%= message.content %>", "UK English Male", {pitch: 1})
+					    </script>
+					<% end %>
+				<% else %>
+					<%= "YOU: " %>
+				<% end %>
+				<%= message.content %>
+			</p>
+		</div>
+	<% end %>
 <% end %>
