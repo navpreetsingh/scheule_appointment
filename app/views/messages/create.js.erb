@@ -1,2 +1,8 @@
 $("#messages").append("<%=j render :partial => 'messages/message' %>");
-$("#start_dictation").click();
+<% if @jarvis_response == 2 %>
+	setTimeout( function(){ 
+	  $("#start_dictation").click();
+	}  , 2000 );
+<% else %>
+	$("#start_dictation").click();
+<% end %>

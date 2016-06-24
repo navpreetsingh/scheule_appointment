@@ -3,21 +3,21 @@ class MessagesController < ApplicationController
 
   def create
   	message = Message.new(message_params)
-    jarvis_response = 1
+    @jarvis_response = 1
   	if message.save!      
   		if message.content.downcase.include? "jarvis" and !(message.content.downcase.include? ("how are you")) and !(message.content.downcase.split(" ").any? { |i| ["book", "appointment"].include? i })
   			Message.create(content: "Yes Sir!!!", jarvis: true)
-        jarvis_response = 2
+        @jarvis_response = 2
   		end
   		if message.content.downcase.include? "how are you" and !(message.content.downcase.split(" ").any? { |i| ["book", "appointment"].include? i })
   		 	Message.create(content: "I am fine sir!!! How are you?", jarvis: true)
-        jarvis_response = 2
+        @jarvis_response = 2
   		end
   		if message.content.downcase.split(" ").any? { |i| ["book", "appointment"].include? i }
   			Message.create(content: "Sure Sir!!! Booking Confirmed.", jarvis: true)
-        jarvis_response = 2
+        @jarvis_response = 2
   		end
-      @messages = Message.last(jarvis_response)
+      @messages = Message.last(@jarvis_response)
       respond_to do |format|
         format.js
       end   	
