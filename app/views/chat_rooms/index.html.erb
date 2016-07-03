@@ -11,7 +11,11 @@
 	<%= render partial: 'messages/message' %>
 </div>
 
+
 <%= form_for @message, :action => 'https://www.google.com/search', method: :post, :html => {:id => "labnol"}, :authenticity_token => true, remote: true do |f| %>
+	<%= radio_button_tag 'category', 'normal', :checked => true %>
+	<%= radio_button_tag 'category', 'dictionary' %>
+	<%= radio_button_tag 'category', 'product' %>
 	<div class="speech">
 		<%= f.text_field :content, placeholder: "Speak", id: "transcript"  %>
 		<%= image_tag("//i.imgur.com/cHidSVu.gif", id: "start_dictation", alt: "Mike") %>
