@@ -8,7 +8,7 @@
 					</span>
 					<% if request.xhr? %>
 						<script type="text/javascript">
-					        responsiveVoice.speak("<%= message.content %>", "UK English Male", {pitch: 1});
+					        responsiveVoice.speak("<%= message.content %>", "UK English Female", {pitch: 1});
 					    </script>
 					<% end %>
 				<% else %>

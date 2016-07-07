@@ -58,7 +58,7 @@ class MessagesController < ApplicationController
   	Message.delete_all
 	  redirect_to :chat_rooms
   end
-
+# heroku logs --app bigmuffin --dyno run.7674
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message
