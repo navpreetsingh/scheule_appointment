@@ -21,6 +21,6 @@ Visit ***http://localhost:3000/*** on browser
 
 ## Way of working
 Radio buttons on top of input box indicate 3 different functionality
-1. Left most radio button goes for normal functionality (Simple talking with booking appointments or telling a joke)
-2. Middle radion button goes for telling meaning of the word from dictionary
-3. Right most radio button goes for telling products on different online channels.
+  1. Left most radio button goes for normal functionality (Simple talking with booking appointments or telling a joke)
+  2. Middle radion button goes for telling meaning of the word from dictionary
+  3. Right most radio button goes for telling products on different online channels.
