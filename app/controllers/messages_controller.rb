@@ -45,6 +45,22 @@ class MessagesController < ApplicationController
       else
         redirect_to :chat_rooms, notice: 'Message not saved!!!.'
       end
+    elsif params[:category] == "product"
+      message = Message.new(message_params)
+      @jarvis_response = 1
+      if message.save!
+        word_found = Product.where("name ILIKE ?", "%" + message.content + "%").first
+        unless word_found.nil?
+          @jarvis_response += 1
+          Message.create(content: "Product found is " + word_found.name + " on " + word_found.channel + " at Rs. " + word_found.mrp.to_s , jarvis: true)
+        end
+        @messages = Message.last(@jarvis_response)
+        respond_to do |format|
+          format.js
+        end     
+      else
+        redirect_to :chat_rooms, notice: 'Message not saved!!!.'
+      end
     end
   end
 

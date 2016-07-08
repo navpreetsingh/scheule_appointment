@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703160706) do
+ActiveRecord::Schema.define(version: 20160708161548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,15 +24,23 @@ ActiveRecord::Schema.define(version: 20160703160706) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "entries", id: false, force: :cascade do |t|
-    t.string "word",       limit: 255
-    t.string "wordtype",   limit: 255
-    t.text   "definition"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.string   "content"
     t.boolean  "jarvis"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.decimal  "mrp"
+    t.string   "brand"
+    t.string   "name"
+    t.string   "image"
+    t.string   "url"
+    t.string   "city"
+    t.string   "category"
+    t.string   "sku_id"
+    t.string   "channel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
