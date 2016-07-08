@@ -17,7 +17,7 @@ $ rake db:create && rake db:migrate && rake db:dictionary && rake db:products
 $ rails server
 ```
 
-Visit ****http://localhost:3000/**** on browser
+Visit ***http://localhost:3000/*** on browser
 
 ## Way of working
 Radio buttons on top of input box indicate 3 different functionality
