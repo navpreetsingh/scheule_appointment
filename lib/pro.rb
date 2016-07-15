@@ -4,7 +4,7 @@ class Pro
 	class << self
 		def store
 			file = File.read(Rails.root + "public/products.json")
-			data = JSON.parse(file)
+			data = JSON.parse(file)[0..3000]
 			data.each do |d|
 				d["mrp"] = d["product_mrp"]
 				d["channel"] = d["channel_name"]

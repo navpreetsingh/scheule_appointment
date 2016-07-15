@@ -4,7 +4,7 @@ class Dict
 	class << self
 		def store
 			file = File.read(Rails.root + "public/entries.json")
-			data = JSON.parse(file)
+			data = JSON.parse(file)[0..5000]
 			data.each do |d|
 				Dictionary.create(word: d["word"], word_type: d["wordtype"], meaning: d["definition"])
 			end
